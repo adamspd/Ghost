@@ -684,10 +684,6 @@ table.body h2 span {
                                         <tr>
                                             <td class=\\"footer\\" style=\\"font-family: -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif; vertical-align: top; color: #15212a; color: rgba(0, 0, 0, 0.6); margin-top: 20px; text-align: center; padding-bottom: 10px; padding-top: 10px; padding-left: 30px; padding-right: 30px; line-height: 1.5em; font-size: 13px;\\" valign=\\"top\\" align=\\"center\\">Ghost &#xA9; 2025 &#x2013; <a href=\\"http://127.0.0.1:2369/unsubscribe/?uuid=example-uuid&key=803e513e2d8b88e759d8f433779659af335d7308b4cbac809600d563f6b49a76&newsletter=requested-newsletter-uuid\\" style=\\"overflow-wrap: anywhere; color: #15212a; color: rgba(0, 0, 0, 0.6); text-decoration: underline; font-size: 13px;\\" target=\\"_blank\\">Unsubscribe</a></td>
                                         </tr>
-
-                                            <tr>
-                                                <td class=\\"footer-powered\\" style=\\"font-family: -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif; font-size: 18px; vertical-align: top; color: #15212A; text-align: center; padding-top: 70px; padding-bottom: 40px;\\" valign=\\"top\\" align=\\"center\\"><a href=\\"https://ghost.org/?via=pbg-newsletter\\" style=\\"color: #FF1A75; text-decoration: none; overflow-wrap: anywhere;\\" target=\\"_blank\\"><img src=\\"https://static.ghost.org/v4.0.0/images/powered.png\\" border=\\"0\\" width=\\"142\\" height=\\"30\\" class=\\"gh-powered\\" alt=\\"Powered by Ghost\\" style=\\"border: none; -ms-interpolation-mode: bicubic; max-width: 100%; width: 142px; height: 30px;\\"></a></td>
-                                            </tr>
                                     </table>
                                 </td>
                             </tr>
@@ -1499,10 +1495,6 @@ table.body h2 span {
                                         <tr>
                                             <td class=\\"footer\\" style=\\"font-family: -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif; vertical-align: top; color: #15212a; color: rgba(0, 0, 0, 0.6); margin-top: 20px; text-align: center; padding-bottom: 10px; padding-top: 10px; padding-left: 30px; padding-right: 30px; line-height: 1.5em; font-size: 13px;\\" valign=\\"top\\" align=\\"center\\">Ghost &#xA9; 2025 &#x2013; <a href=\\"http://127.0.0.1:2369/unsubscribe/?uuid=example-uuid&key=803e513e2d8b88e759d8f433779659af335d7308b4cbac809600d563f6b49a76&newsletter=requested-newsletter-uuid\\" style=\\"overflow-wrap: anywhere; color: #15212a; color: rgba(0, 0, 0, 0.6); text-decoration: underline; font-size: 13px;\\" target=\\"_blank\\">Unsubscribe</a></td>
                                         </tr>
-
-                                            <tr>
-                                                <td class=\\"footer-powered\\" style=\\"font-family: -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif; font-size: 18px; vertical-align: top; color: #15212A; text-align: center; padding-top: 70px; padding-bottom: 40px;\\" valign=\\"top\\" align=\\"center\\"><a href=\\"https://ghost.org/?via=pbg-newsletter\\" style=\\"color: #FF1A75; text-decoration: none; overflow-wrap: anywhere;\\" target=\\"_blank\\"><img src=\\"https://static.ghost.org/v4.0.0/images/powered.png\\" border=\\"0\\" width=\\"142\\" height=\\"30\\" class=\\"gh-powered\\" alt=\\"Powered by Ghost\\" style=\\"border: none; -ms-interpolation-mode: bicubic; max-width: 100%; width: 142px; height: 30px;\\"></a></td>
-                                            </tr>
                                     </table>
                                 </td>
                             </tr>

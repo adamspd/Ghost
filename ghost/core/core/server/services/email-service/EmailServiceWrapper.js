@@ -22,6 +22,7 @@ class EmailServiceWrapper {
         const BatchSendingService = require('./BatchSendingService');
         const EmailSegmenter = require('./EmailSegmenter');
         const MailgunEmailProvider = require('./MailgunEmailProvider');
+        const SMTPEmailProvider = require('./SMTPEmailProvider');
         const {DomainWarmingService} = require('./DomainWarmingService');
 
         const {Post, Newsletter, Email, EmailBatch, EmailRecipient, Member} = require('../../models');
@@ -59,6 +60,44 @@ class EmailServiceWrapper {
         const mailgunClient = new MailgunClient({
             config: configService, settings: settingsCache, labs
         });
+        
+        // Determine which email provider to use based on configuration
+        let emailProvider;
+        const mailConfig = configService.get('mail');
+        const bulkEmailConfig = configService.get('bulkEmail');
+        
+        // Check if Mailgun is specifically configured for bulk email
+        const hasMailgunConfig = bulkEmailConfig && bulkEmailConfig.mailgun;
+        
+        // Check if we have SMTP configured and no Mailgun bulk email config
+        const hasSMTPConfig = mailConfig && 
+            (mailConfig.transport === 'SMTP' || mailConfig.transport === 'smtp');
+            
+        if (hasMailgunConfig) {
+            // Use Mailgun if explicitly configured
+            logging.info('[Email Service] Using Mailgun email provider for bulk email');
+            emailProvider = new MailgunEmailProvider({
+                mailgunClient,
+                errorHandler
+            });
+        } else if (hasSMTPConfig) {
+            // Use SMTP if configured and no Mailgun bulk email config
+            logging.info('[Email Service] Using SMTP email provider for bulk email');
+            const mail = require('../mail');
+            const ghostMailer = new mail.GhostMailer();
+            emailProvider = new SMTPEmailProvider({
+                ghostMailer,
+                errorHandler
+            });
+        } else {
+            // Fallback to Mailgun (original behavior)
+            logging.info('[Email Service] Using Mailgun email provider (fallback)');
+            emailProvider = new MailgunEmailProvider({
+                mailgunClient,
+                errorHandler
+            });
+        }
+
         const i18nLanguage = labs.isSet('i18n') ? settingsCache.get('locale') || 'en' : 'en';
         const i18n = i18nLib(i18nLanguage, 'ghost');
 
@@ -77,11 +116,6 @@ class EmailServiceWrapper {
                 debug('locale changed, updating i18n to', model.get('value'));
                 i18n.changeLanguage(model.get('value'));
             }
-        });
-
-        const mailgunEmailProvider = new MailgunEmailProvider({
-            mailgunClient,
-            errorHandler
         });
 
         const emailRenderer = new EmailRenderer({
@@ -107,7 +141,7 @@ class EmailServiceWrapper {
         });
 
         const sendingService = new SendingService({
-            emailProvider: mailgunEmailProvider,
+            emailProvider: emailProvider,
             emailRenderer,
             emailAddressService: emailAddressService.service
         });

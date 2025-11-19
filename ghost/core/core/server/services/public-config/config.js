@@ -16,7 +16,10 @@ module.exports = function getConfigProperties() {
         clientExtensions: config.get('clientExtensions') || {},
         enableDeveloperExperiments: config.get('enableDeveloperExperiments') || false,
         stripeDirect: config.get('stripeDirect'),
-        mailgunIsConfigured: !!(config.get('bulkEmail') && config.get('bulkEmail').mailgun),
+        mailgunIsConfigured: !!(
+            (config.get('bulkEmail') && config.get('bulkEmail').mailgun) ||
+            (config.get('mail') && (config.get('mail').transport === 'SMTP' || config.get('mail').transport === 'smtp'))
+        ),
         emailAnalytics: config.get('emailAnalytics:enabled'),
         hostSettings: config.get('hostSettings'),
         tenor: config.get('tenor'),
